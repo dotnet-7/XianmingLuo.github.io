@@ -14,5 +14,7 @@ Response variables depent on explanatory variables.\
 Manipulate explanatory variable, see the effect on the response variable.\
 Can exchange when tasks change.
 ## Models
-### Generalized Linear Mode
+### Generalized Linear Model
+$$E[y|x]=f(x'b)$$
 ### Logistic Regression
+
