@@ -44,3 +44,38 @@ Why elasticity is not defined in $\frac{dy}{dx}$? Because is only cares single f
 Covariates may not be independent from each other. Does it hurt?\
 An interation term is the product of two inputs.
 $$E[y|\texbf{x}]=\beta_0+...+\beta_kx_k+\beta_jx_j+x_jx_k\beta_{jk}$$
+
+## Degrees of Freedom
+- Model Degree of Freedom \
+"the number of random observations a model can fit perfectly", in regression models, the number of coefficients
+- Residual Degree of Freedom \
+The number of opportunities that one has to observe variation around the fitted model. \
+y = ax + b, two points will be used to fit the model, other used to observe variation
+
+## Logit Link Function
+$$E[y|\mathbf{x}]=f(\mathbf{x}'\beta)$$ \
+$$E[y|\mathbf{x}]=p(y=1|\mathbf{x})\times1+p(y=0|\mathbf{x})\times0=p(y=1|\mathbf{x})$$ \
+$$p(y=1|\mathbf{x})=f(\mathbf{x}'\beta)$$ \
+$f$ needs to map from $(-\infty,\infty)$ to $[0, 1]$ \
+Logit link function $f(z)=\frac{e^z}{1+e^z}$ \
+
+## Mapping from $(-\infty, \infty)$ to [0, 1]
+An engineering problem, candidates as below
+- (Probit) Cumulative Normal Distribution Function: Costly in computation
+- Logit $\frac{e^z}{1+e^z}$
+
+## Odds $\frac{p}{1-p}$
+Logistic regression is a linear model for log odds
+
+## Relation between Data and Model
+### Likelihood
+The probability of the data given the estimated model \
+Linear Regression + Gaussian Distribution -> Likelihood of a data point in the model \
+Maximize likelihood -> Minimize Diviance
+- Gaussian Deviance
+- Logistic Deviance -> Cross Entropy?
+
+## Regression in Time Series Data
+TODO
+
+
