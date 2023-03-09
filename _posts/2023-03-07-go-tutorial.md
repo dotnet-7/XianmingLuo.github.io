@@ -167,3 +167,73 @@ No need to specify path, like grep, find. The binary will be put to the go binar
 ```
 go install
 ```
+
+## Multi-module
+### Create the workspace
+```
+go work init ./hello
+```
+"The use directive tells Go that the module in the hello directory should be main modules when doing a build."
+### Add module to workspace
+```
+go work use ./example
+```
+"This will allow us to use the new code we will write in our copy of the stringutil module instead of the version of the module in the module cache that we downloaded with the go get command"
+"go.work can be used instead of adding **replace** directives to work across multiple modules."
+
+### Other Commands
+```
+go work use [-r] [dir]
+go work edit
+go work sync
+```
+
+## Struct
+### Definition
+```
+type Vertex struct {
+    X int 
+    Y int
+}
+```
+### Assignment
+#### Struct Assignment
+```
+v := Vertex{1, 2}
+```
+#### Member Assignment
+```
+v.X = 4
+```
+#### Pointer Deeferencing
+```
+p := &v
+p.X = 1e9
+(*p).X = 1e9
+```
+### Method
+#### Definition
+```
+func (v Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+```
+"A method is a function with a special receiver argument. The receiver appears in its own argument list between the func keyword and the method name."
+#### Invocation
+```
+v.Abs()
+```
+
+#### Pointer Receivers
+```
+func (v Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+func (v *Vertex) Scale(f float64) {
+    v.X = v.X * f
+    v.Y = v.Y * f
+}
+```
+"Methods with pointer receivers can **modify** the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers are more common than value receivers."
+
+## Interfaces
