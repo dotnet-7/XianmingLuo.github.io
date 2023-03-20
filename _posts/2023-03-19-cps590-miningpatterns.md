@@ -29,14 +29,14 @@ Steps:
                    1.1.1.1.1.2 $$A \subseteq T$$  
                        $$Transitivity_{\subseteq}$$, 1.1.1.1.1.1, and 1  
                    1.1.1.1.1.3 $$T \in D_A$$  
-           1.1.1.2 $$count(D_A) \le count(D_I)$$  
+           1.1.1.2 $$count(D_A) \ge count(D_I)$$  
                    subset property(which?) and 1.1.1.1  
-        1.1.2 $$P(A) \le P(I)$$  
+        1.1.2 $$P(A) \ge P(I)$$  
             $$Def_p$$ and 1.1.1  
-        1.1.3 $$P(I) \le min\_sup$$  
+        1.1.3 $$P(I) \ge min\_sup$$  
             $$Def_{frequent}$$ on the assumption of 1.1  
-        1.1.4 $$P(A) \le min\_sup$$  
-            $$Transitivity_{\leq}$$, 1.1.2, and 1.1.3  
+        1.1.4 $$P(A) \ge min\_sup$$  
+            $$Transitivity_{\geq}$$, 1.1.2, and 1.1.3  
         1.1.5 $$frequent(A)$$  
             $$Def_{frequent}$$ with 1.1.4  
 
