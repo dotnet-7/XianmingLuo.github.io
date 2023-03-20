@@ -15,14 +15,14 @@ $$Def_{frequent}$$:$$frequent(I)$$ means: $$P(I)\le min\_sup$$
 
 Lemmas+Axioms: What does this mean? \
 Proof Goal:  
-$$\forall A \subset I. frequent(I) \Rightarrow frequent(A)$$  
+$$\forall A \subseteq I. frequent(I) \Rightarrow frequent(A)$$  
 Steps:  
-1. $$\forall A \subset I. frequent(I) \Rightarrow frequent(A)$$  
-   Pick any itemset $$A, I$$, where $$A \subset I$$, and...  
-   1.1 $$frequent(I) \Rightarrow frequent(A)$$
+1. $$\forall A \subseteq I. frequent(I) \Rightarrow frequent(A)$$  
+   Pick any itemset $$A, I$$, where $$A \subseteq I$$, and...  
+   1.1 $$frequent(I) \Rightarrow frequent(A)$$  
        Assume $$frequent(I)$$, and...  
        1.1.1 $$count(D_A) \le count(D_I)$$  
-           1.1.1.1 $$D_I \subset D_A$$  
+           1.1.1.1 $$D_I \subseteq D_A$$  
                1.1.1.1.1 $$\forall T \in D_I, T \in D_A$$  
                    Pick any transaction $$T \in D_I$$, and...  
                    1.1.1.1.1.1 $$I \subseteq T$$  
