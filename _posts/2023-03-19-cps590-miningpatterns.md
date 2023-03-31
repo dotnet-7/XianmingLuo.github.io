@@ -11,7 +11,7 @@ title: Data Science:Mining Patterns
 ### For every frequent itemset, its subset is also frequent.
 Definitions: \
 $$Def_p$$:$$P(A)=\frac{count(D_A)}{count(D)}$$, where $$D$$ is a set of all the transactions in the databse, $$D_A$$ is a set of all the transactions in the database that contain $$A$$   
-$$Def_{frequent}$$:$$frequent(I)$$ means: $$P(I)\le min\_sup$$  
+$$Def_{frequent}$$:$$frequent(I)$$ means: $$P(I)\ge min\_sup$$  
 
 Lemmas+Axioms: What does this mean? \
 Proof Goal:  

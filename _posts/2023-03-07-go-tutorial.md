@@ -237,3 +237,59 @@ func (v *Vertex) Scale(f float64) {
 "Methods with pointer receivers can **modify** the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers are more common than value receivers."
 
 ## Interfaces
+
+## Packages (Or modules?)
+### flag
+Command-line flag parsing \\
+E.g. flag.Bool(flag_name, default_value, help_message)
+### rpc
+rpc over HTTP
+#### server
+```
+// Register service
+rpc.Register(arith)
+rpc.HandleHTTP
+// Listen incoming connection
+l, e := net.Listen("tcp", port)
+// Serve RPC
+go http.Serve(l, nil)
+```
+#### client
+```
+// Dial server's HTTP service
+client, err := rpc.DialHTTP("tcp", ip_and_port)
+// Input arguments
+args := &rpc_tutorial.Args{7,8e
+// RPC
+err = client.Call("Arith.Mulitply", args, &reply)
+}
+```
+## Bytes
+ byte has 8 bits.
+### Declaration
+```
+var a1 byte = 97
+```
+### Print
+```
+fmt.Printf("%c\n", a1)
+```
+### Conversion
+#### string to bytes
+Convert string to byte array
+```
+fmt.Println([]byte("falcon"))
+```
+
+### 1D byte array
+```
+data := []byte{102, 97, 108, 99, 111, 110}
+```
+#### Dynamically Allocate
+```
+buf := make([]byte, 256)
+```
+### 2D byte array
+```
+data := [][]byte{[]byte("an"), []byte("old"), []byte("wolf")}
+```
