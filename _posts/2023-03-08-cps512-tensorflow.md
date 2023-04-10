@@ -3,6 +3,17 @@ layout: default
 title: Distributed Systems:TensorFlow
 ---
 # TensorFlow: A system for large-scale machine learning
+## Parallel Training
+- Data Parallel
+Train on different shards of training data in parallel
+- Model Parallel
+Train different parts of the model in parallel, may need communication between parts
+## Parameter Server
+Each computation cluster report parameter update to the parameter server using put() \\
+Each computation cluster fetch up-to-date parameter from the parameter server using get()
+
+### Why not parameter server (DistBelief) ?
+
 
 ## Key Distribution
 - Dataflow Graph
@@ -30,7 +41,7 @@ What is parameter servers?
 "Because the parameter updates in many algoriths are commutative and have weak consistency requirements, the worker processes can compute updates independently and write back "delta" updates to each parameter server, which combines the updates with its current state."
 ### Limitations
 - Defining new layer needs C++
-- Refining the training algorithms involves modifying the parameter server implementation.
+- Refining the training algorithms involves modifying the parameter server implementation
 
 
 - Adam

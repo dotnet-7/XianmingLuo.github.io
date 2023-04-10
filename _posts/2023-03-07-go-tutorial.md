@@ -79,6 +79,62 @@ func Hello(name string) (string, error) {
     return message, nil
 }
 ```
+#### Throw Specific Type of Error
+```
+type QueryError struct {
+    Query string
+    Err error
+}
+func (e *QueryError) Error() string {return e.Query + ": " + e.Err.Error()}
+```
+"The built-in error interface allows Go programmers to add whatever information they desire. All it requires is a type that implements an Error method."
+
+#### One error containing another
+```
+type QueryError struct {
+    Query string
+    Err error
+}
+```
+#### Unwrap the error
+```
+if e, ok := err.(*QueryError); ok && e.Err == ErrPermission {
+    // query failed because of a permission problem
+}
+```
+##### The unwrap method
+```
+func (e *QueryError) Unwrap() error { return e.Err}
+```
+##### Examining errors with Is and As
+"The errors.Is function compares an error to a value."
+```
+// Similar to:
+//   if err == ErrNotFound {...}
+if errors.Is(err, ErrNotFound) {
+    // something wasn't found
+}
+```
+"The As function tests whether an error is a specific type."
+```
+// Similar to:
+//   if e, ok := err.(*QueryError); ok {...}
+var e *QueryError
+// Note: *QueryError is the type of the error.
+if errors.As(err, &e) {
+    // err is a *QueryError, and e is set to the error's value
+}
+```
+"When operating on wrapped errors, however, these functions consider **all** the errors in a chain."
+##### Wrapping errors with %w
+"When this verb is present, the error returned by fmt.Errorf will have an Unwrap method returning the argument of %w, which must be an error."
+```
+if err != nil {
+    // Return an error which unwraps to err
+    return fmt.Errorf("decompress %v: %w", name, err)
+}
+```
+
 ### Handle Errors
 ```
 if err != nil {
@@ -86,6 +142,26 @@ if err != nil {
 }
 ```
 "If you get an error, you use the log package's Fatal function to print the error and **stop** the program."
+#### Handle Specific Type of Error
+##### Sentinel Value
+```
+var ErrNotFound = errors.New("not found")
+if err == ErrNotFound {
+    // handle ErrNotFound
+}
+```
+##### Type assertion or type switch
+```
+type NotFoundError struct {
+    Name string
+}
+
+func (e *NotFoundError) Error() string {return e.Name + ": not found" }
+
+if e, ok := err.(*NotFoundError); ok {
+    // e.Name wasn't found
+}
+```
 ## If Condition
 ```
 if name == "" {
